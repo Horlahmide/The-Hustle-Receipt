@@ -6,6 +6,8 @@ import { TipStatus } from "@/lib/tips";
 import { rateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 const initiateSchema = z.object({
   slug: z.string().min(1, "Creator slug is required"),
   tipperName: z.string().optional(),

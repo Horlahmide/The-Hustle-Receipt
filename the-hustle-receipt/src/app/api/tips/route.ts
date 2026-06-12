@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { TipStatus } from "@/lib/tips";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const session = await auth();
 

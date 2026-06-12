@@ -3,6 +3,8 @@ import { processTipVerification } from "@/lib/tips";
 import { rateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   try {
     // 0. Rate Limiting (10 requests per minute)
