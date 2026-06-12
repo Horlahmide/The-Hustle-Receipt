@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { cleanupStaleTips } from "@/lib/tips";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   try {
     // 1. Simple Security Check
