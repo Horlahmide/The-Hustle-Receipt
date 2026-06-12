@@ -29,6 +29,21 @@ export async function POST(req: Request) {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
 
+    if (!slug) {
+      return NextResponse.json(
+        { error: "Name must contain at least one letter or number" },
+        { status: 400 }
+      );
+    }
+
+    const slugExists = await prisma.user.findUnique({ where: { slug } });
+    if (slugExists) {
+      return NextResponse.json(
+        { error: "This name results in a URL that is already taken. Please try a different name." },
+        { status: 409 }
+      );
+    }
+
     const user = await prisma.user.create({
       data: {
         name,
