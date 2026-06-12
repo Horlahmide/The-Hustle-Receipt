@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     // 3. Process the verification (Handles DB check, re-query, and idempotency)
     // We don't await this if we want to respond fast, but for simple logic, awaiting is safer.
-    await processTipVerification(txRef);
+    await processTipVerification(txRef, "WEBHOOK");
 
     // 4. Always respond with 200 OK to acknowledge receipt
     return NextResponse.json({ status: "acknowledged" });
